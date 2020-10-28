@@ -10,10 +10,12 @@ hpath = os.path.join(install_headers_path, libname)
 
 licant.source("linalg.h")
 licant.copy(src="linalg.h", tgt=os.path.join(hpath,"linalg.h"))
+licant.copy(src="linalg.h", tgt=os.path.join(".", "linalg/linalg.h"))
 
 licant.fileset("install", 
 [
-	os.path.join(hpath,"linalg.h")
+	os.path.join(hpath,"linalg.h"),
+	os.path.join(".","linalg/linalg.h")
 ])
 
 licant.ex("install")
