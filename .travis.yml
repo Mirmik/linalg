@@ -38,4 +38,4 @@ script:
   cd samples;
   cmake .;
   make;
-  ./linalg-test;
+  ./bin/linalg-test;
