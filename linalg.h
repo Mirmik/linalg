@@ -659,15 +659,6 @@ namespace std
     template<class T, int M> struct hash<linalg::mat<T,M,4>> { std::size_t operator()(const linalg::mat<T,M,4> & v) const { std::hash<linalg::vec<T,M>> h; return h(v.x) ^ (h(v.y) << M) ^ (h(v.z) << (M*2)) ^ (h(v.w) << (M*3)); } };
 }
 
-#include <nos/print.h>
-#include <nos/fprint.h>
-
-namespace nos {
-    template <typename T> struct print_implementation<linalg::vec<T,2>> { static ssize_t print_to(nos::ostream& os, const linalg::vec<T,2>& v) { return nos::fprint_to(os, "({},{})", v[0], v[1]); } }; 
-    template <typename T> struct print_implementation<linalg::vec<T,3>> { static ssize_t print_to(nos::ostream& os, const linalg::vec<T,3>& v) { return nos::fprint_to(os, "({},{},{})", v[0], v[1], v[2]); } }; 
-    template <typename T> struct print_implementation<linalg::vec<T,4>> { static ssize_t print_to(nos::ostream& os, const linalg::vec<T,4>& v) { return nos::fprint_to(os, "({},{},{},{})", v[0], v[1], v[2], v[3]); } }; 
-}
-
 // Definitions of functions too long to be defined inline
 template<class T> constexpr linalg::mat<T,3,3> linalg::adjugate(const mat<T,3,3> & a) 
 {
@@ -724,5 +715,16 @@ namespace std
 {
     template<class T, int N> size_t size(const linalg::vec<T,N>&) { return N; }
 }
+
+#if __has_include(<nos/print.h>)
+#include <nos/print.h>
+#include <nos/fprint.h>
+
+namespace nos {
+    template <typename T> struct print_implementation<linalg::vec<T,2>> { static ssize_t print_to(nos::ostream& os, const linalg::vec<T,2>& v) { return nos::fprint_to(os, "({},{})", v[0], v[1]); } }; 
+    template <typename T> struct print_implementation<linalg::vec<T,3>> { static ssize_t print_to(nos::ostream& os, const linalg::vec<T,3>& v) { return nos::fprint_to(os, "({},{},{})", v[0], v[1], v[2]); } }; 
+    template <typename T> struct print_implementation<linalg::vec<T,4>> { static ssize_t print_to(nos::ostream& os, const linalg::vec<T,4>& v) { return nos::fprint_to(os, "({},{},{},{})", v[0], v[1], v[2], v[3]); } }; 
+}
+#endif
 
 #endif
