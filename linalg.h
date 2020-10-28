@@ -501,6 +501,7 @@ namespace linalg
     template<class T, int M> constexpr T dot      (const vec<T,M> & a, const vec<T,M> & b)      { return sum(a*b); }
     template<class T, int M> constexpr T length2  (const vec<T,M> & a)                          { return dot(a,a); }
     template<class T, int M> T           length   (const vec<T,M> & a)                          { return std::sqrt(length2(a)); }
+    template<class T, int M> T           length0  (const vec<T,M> & a)                          { return maxelem(abs(a)); }
     template<class T, int M> vec<T,M>    normalize(const vec<T,M> & a)                          { return a / length(a); }
     template<class T, int M> constexpr T distance2(const vec<T,M> & a, const vec<T,M> & b)      { return length2(b-a); }
     template<class T, int M> T           distance (const vec<T,M> & a, const vec<T,M> & b)      { return length(b-a); }
