@@ -36,5 +36,6 @@ install:
 
 script: 
   cd samples;
+  cmake;
   make;
   ./linalg-test;
