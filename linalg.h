@@ -659,6 +659,15 @@ namespace std
     template<class T, int M> struct hash<linalg::mat<T,M,4>> { std::size_t operator()(const linalg::mat<T,M,4> & v) const { std::hash<linalg::vec<T,M>> h; return h(v.x) ^ (h(v.y) << M) ^ (h(v.z) << (M*2)) ^ (h(v.w) << (M*3)); } };
 }
 
+#include <nos/print.h>
+#include <nos/fprint.h>
+
+namespace nos {
+    template <typename T> struct print_implementation<linalg::vec<T,2>> { static ssize_t print_to(nos::ostream& os, const linalg::vec<T,2>& v) { return nos::fprint_to(os, "({},{})", v[0], v[1]); } }; 
+    template <typename T> struct print_implementation<linalg::vec<T,3>> { static ssize_t print_to(nos::ostream& os, const linalg::vec<T,3>& v) { return nos::fprint_to(os, "({},{},{})", v[0], v[1], v[2]); } }; 
+    template <typename T> struct print_implementation<linalg::vec<T,4>> { static ssize_t print_to(nos::ostream& os, const linalg::vec<T,4>& v) { return nos::fprint_to(os, "({},{},{},{})", v[0], v[1], v[2], v[3]); } }; 
+}
+
 // Definitions of functions too long to be defined inline
 template<class T> constexpr linalg::mat<T,3,3> linalg::adjugate(const mat<T,3,3> & a) 
 {
@@ -709,6 +718,11 @@ template<class T> linalg::mat<T,4,4> linalg::frustum_matrix(T x0, T x1, T y0, T 
 {
     const T s = a == pos_z ? T(1) : T(-1), o = z == neg_one_to_one ? n : 0;
     return {{2*n/(x1-x0),0,0,0}, {0,2*n/(y1-y0),0,0}, {-s*(x0+x1)/(x1-x0),-s*(y0+y1)/(y1-y0),s*(f+o)/(f-n),s}, {0,0,-(n+o)*f/(f-n),0}};
+}
+
+namespace std 
+{
+    template<class T, int N> size_t size(const linalg::vec<T,N>&) { return N; }
 }
 
 #endif
