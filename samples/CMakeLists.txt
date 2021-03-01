@@ -2,6 +2,7 @@ project(linalg)
 cmake_minimum_required(VERSION 3.0)
 
 add_executable(linalg-test
+    test-pinv.cpp
     linalg-test.cpp
     linalg-test2.cpp
     test-user-defined-conversions.cpp
@@ -11,6 +12,9 @@ add_executable(linalg-test
     test-higher-order-functions.cpp
     test-quaternions.cpp
 )
+
+target_link_libraries(linalg-test nos)
+
 set_target_properties(linalg-test PROPERTIES 
     CXX_STANDARD 11
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin

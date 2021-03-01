@@ -285,6 +285,33 @@ test-ostream-overloads.cpp.s:
 	$(MAKE) -f CMakeFiles/linalg-test.dir/build.make CMakeFiles/linalg-test.dir/test-ostream-overloads.cpp.s
 .PHONY : test-ostream-overloads.cpp.s
 
+test-pinv.o: test-pinv.cpp.o
+
+.PHONY : test-pinv.o
+
+# target to build an object file
+test-pinv.cpp.o:
+	$(MAKE) -f CMakeFiles/linalg-test.dir/build.make CMakeFiles/linalg-test.dir/test-pinv.cpp.o
+.PHONY : test-pinv.cpp.o
+
+test-pinv.i: test-pinv.cpp.i
+
+.PHONY : test-pinv.i
+
+# target to preprocess a source file
+test-pinv.cpp.i:
+	$(MAKE) -f CMakeFiles/linalg-test.dir/build.make CMakeFiles/linalg-test.dir/test-pinv.cpp.i
+.PHONY : test-pinv.cpp.i
+
+test-pinv.s: test-pinv.cpp.s
+
+.PHONY : test-pinv.s
+
+# target to generate assembly for a file
+test-pinv.cpp.s:
+	$(MAKE) -f CMakeFiles/linalg-test.dir/build.make CMakeFiles/linalg-test.dir/test-pinv.cpp.s
+.PHONY : test-pinv.cpp.s
+
 test-quaternions.o: test-quaternions.cpp.o
 
 .PHONY : test-quaternions.o
@@ -366,6 +393,9 @@ help:
 	@echo "... test-ostream-overloads.o"
 	@echo "... test-ostream-overloads.i"
 	@echo "... test-ostream-overloads.s"
+	@echo "... test-pinv.o"
+	@echo "... test-pinv.i"
+	@echo "... test-pinv.s"
 	@echo "... test-quaternions.o"
 	@echo "... test-quaternions.i"
 	@echo "... test-quaternions.s"
