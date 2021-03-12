@@ -747,7 +747,6 @@ namespace nos
 template<class T>
 linalg::mat<T, 2, 3> pinv(const linalg::mat<T, 3, 2> & a)
 {
-	nos::println("HERE");
 	auto xx = a.x.x;
 	auto yx = a.y.x;
 	auto xy = a.x.y;
@@ -764,7 +763,6 @@ linalg::mat<T, 2, 3> pinv(const linalg::mat<T, 3, 2> & a)
 
 	auto frac = -2 * xx * xy * yx * yy - 2 * xx * xz * yx * yz + xx2 * yy2 + xx2 * yz2 - 2 * xy * xz * yy * yz + xy2 * yx2 + xy2 * yz2 + xz2 * yx2 + xz2 * yy2;
 
-	PRINT(frac);
 	return
 	{
 		{
