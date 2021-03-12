@@ -13,7 +13,7 @@ add_executable(linalg-test
     test-quaternions.cpp
 )
 
-target_link_libraries(linalg-test nos)
+target_link_libraries(linalg-test)
 
 set_target_properties(linalg-test PROPERTIES 
     CXX_STANDARD 11
